@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>PlatziMediaPlayer.js</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+<script>
+    //IIFE Funcion que se invoca inmediatamente en el código ()
+    (function() {
+            let color = 'green';
+            function printColor(){
+                console.log(color);
+            };
+            printColor();
+        }
+    )();
+    //Esto es un enclosure: una funcion definida dentro de un scope tiene acceso a las variables definidas en ese scope
+
+    //Funciones que regresan funciones
+    function makeColorPrinter(color){
+        let colorMessage = `the color is ${color}`;
+
+        return function(){
+            console.log(colorMessage)
+        }
+    }
+
+    let greencolorprinter = makeColorPrinter("rojito");
+    greencolorprinter();
+
+    // variables privadas
+    //Este una función enclosure no se puede acceder a la cuenta en la consola
+    function makeCounter(n){
+        let count = n;
+        return{
+            increase: function (){ count = count + 1;},
+            decrease: function (){ count = count - 1;},
+            getCount: function (){ return count;},
+        };
+    }
+
+    let counter = makeCounter(7);
+    counter.increase();
+    console.log(counter.getCount());
+
+</script>
+
+</body>
+</html>
