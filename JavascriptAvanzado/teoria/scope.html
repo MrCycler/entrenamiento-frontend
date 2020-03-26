@@ -1,0 +1,42 @@
+<script>
+    //Global scope (accesible desde la consola como window.message)
+    var message = 'Hello';
+
+    //Function scope
+    var $ = function(message){
+        console.log('Say: '+message);
+    }
+
+    function printNumbers(){
+        var i;
+        for(i=0;i<10;i++) {
+            function eventuallyPrintNumber(n){
+                setTimeout(function(){
+                    console.log(n)
+                },100);
+            };
+            eventuallyPrintNumber(i);
+        }
+    }
+
+    printNumber();
+
+    //Block scope
+    {
+        let variable
+    }
+
+    function printNumbers2(){
+        for(let i=0;i<10;i++) {
+            setTimeout(function(){console.log(i);},100);
+        }
+    }
+
+  
+
+</script>  
+
+
+<script type="module" src="./ga.js">
+//Declara un modulo, las variables no salen del archivo y son innaccesibles desde consola
+</script>
