@@ -1,0 +1,13 @@
+{
+  "name": "platzi-media-player",
+  "version": "1.0.0",
+  "description": "Javascript Profesional",
+  "license": "MIT",
+  "author": "Juan Mendoza",
+  "scripts": {
+    "start": "live-server"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
