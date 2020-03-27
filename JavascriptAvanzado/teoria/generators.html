@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>PlatziMediaPlayer.js</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+<script>
+    //Generator es una funcion que guarda sus valores
+    function* simpleGenerator(){
+        let i = 0;
+        let reset;
+        console.log(i)
+        yield i; //yield tambien puede servir como return 
+        while(true){
+            reset = yield i; //yield aca funciona como return y le da a reset el valor pasado en next
+            if(reset){
+                i = 1;
+                console.log(i);
+            }
+            else
+            {
+                i = i +1;
+                console.log("GENERATOR START");
+                console.log(i);
+                console.log("GENERATOR END");
+            }
+        }
+    }
+
+    //para ejecutar cada paso del generator se requiere convocar al método next()
+    const gen = simpleGenerator();
+    gen.next();
+    gen.next();
+    gen.next();
+    gen.next();
+    gen.next(true);//se paso un parametro al generador
+    gen.next();
+    gen.next();
+    gen.next();
+
+</script>
+
+</body>
+</html>
