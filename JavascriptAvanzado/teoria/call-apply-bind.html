@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>PlatziMediaPlayer.js</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+    <button class="call-to-action">Aprender</button>
+    <button class="call-to-action">Aprender2</button>
+    <button class="call-to-action">Aprender3</button>
+<script>
+
+    //CALL
+    function saludar (){
+        console.log(`Hola. Soy ${this.name} ${this.apellido}`);
+    }
+
+    const richard ={
+        name: "Richard",
+        apellido: "Lopez"
+    }
+
+    //call(this) le da a la función el contexto, el objeto que tendra en cuenta al ejecutar
+    saludar.call(richard);
+
+    function caminar (metros,direccion){
+        console.log(`Hola. Soy ${this.name} camina ${metros} hacia ${direccion}`);
+    }
+
+    //da el contexto y los argumentos
+    caminar.call(richard,400,'norte');
+
+    //APPLY
+    //misma funcionalidad de call pero con argumentos en un array 
+    caminar.apply(richard,[500,'noreste']);
+
+    //BIND
+    const daniel = {name:"Daniel",apellido:"Sanchez"}
+    //nos permite crear una nueva funcion que es la funcion original con el contexto bindeado
+    const danielSaluda = saludar.bind(daniel);
+    danielSaluda();
+    const danielCamina = caminar.bind(daniel);
+    danielCamina(200,'sur');
+    //tecnica de curing
+    const danielCamina100 = caminar.bind(daniel,100);
+    danielCamina100('Oeste');
+
+    const buttons = document.getElementsByClassName("call-to-action");
+    //buttons es Nodelist, forEach no es aplicable sin antes hacer un call
+    //se le pasa el contexto y el argunmentp de forEach(funcion de ejecucion para cada elemento)
+    Array.prototype.forEach.call(buttons,button=>{
+        button.onclick = () =>alert(`Mensaje`);
+    });
+
+
+</script>
+
+</body>
+</html>
