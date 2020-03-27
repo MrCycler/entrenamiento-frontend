@@ -3,7 +3,10 @@ function AutoPlay(){
 }
 
 AutoPlay.prototype.run = function(player){
-    player.mute();
+    //Uso de la propiedad definida con getters y setters
+    if (!player.muted){
+        player.muted =true;
+    }
     player.play();
 };
 

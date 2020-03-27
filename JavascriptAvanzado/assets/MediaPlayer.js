@@ -8,9 +8,24 @@ function MediaPlayer(config){
 //Se agrega un metodo a la class MediaPlayer
 
 MediaPlayer.prototype._initPlugins = function (){
+
+    //Objeto de información reducida
+    const player = {
+        play: () => this.play(),
+        media: this.media,
+        //Se uso getter y setters para definir en este objeto propiedades virtuales
+        get muted(){
+            return this.media.muted;
+        },
+        set muted(value){
+            this.media.muted = value;
+        }
+    };
+
+    // A cada plugin se le pasa el objeto de información reducida
     this.plugins.forEach(plugin => {
-        plugin.run(this);
-    })
+        plugin.run(player);
+    });
 };
 
 MediaPlayer.prototype.play = function(){
