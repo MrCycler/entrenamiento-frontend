@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>PlatziMediaPlayer.js</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+<script>
+
+    //CASO 1 - Entorno grobal
+    console.log(`this: ${this}`); //Mostrara el objeto window
+
+    function whoIsThis1(){
+        return this;
+    }
+
+
+    // CASO 2 - STRICT MODE
+    console.log(`who is this: ${whoIsThis1()}`);//Mostrar nuevamente el objeto window, es una funcion simple
+
+    function whoIsThis2(){
+        "use strict";
+        return this;
+    }
+
+    console.log(`who is this: ${whoIsThis2()}`);//Mostrar el objeto undefined [Se activo el strict mode]
+
+    //CASO 3 - this usado en un objeto
+    const person = {
+        name: 'Gabriel',
+        saludar: function(){
+            console.log(`Hola soy ${this.name}`);
+        },
+    };
+
+    person.saludar();
+
+    //ERROR: No se halla dentro del concepto de un objeto
+    const accion = person.saludar;
+    accion();
+
+    //CASO 4 - En este caso this se refiere a la instancia de clase
+    //Clase
+    function Person(name){
+        this.name = name;
+    }
+
+    Person.prototype.saludar = function(){
+        console.log(`Me llamo ${this.name}`);
+    }
+
+    //Instancia de clase (objeto)
+    let Angela = new Person("Angela");
+    Angela.saludar();
+
+</script>
+
+</body>
+</html>

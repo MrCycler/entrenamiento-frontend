@@ -6,7 +6,7 @@ const playbutton = document.getElementById("playButton");
 const mutebutton = document.getElementById("muteButton");
 
 //Instancia
-const player = new MediaPlayer({ el: video, plugins:[new AutoPlay] });
+const player = new MediaPlayer({ el: video, plugins:[/*new AutoPlay*/] });
 //Usando el metodo
 playbutton.onclick = () => player.togglePlay();
 mutebutton.onclick = () => player.toggleSoud();
