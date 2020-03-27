@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>PlatziMediaPlayer.js</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+    <button class="call-to-action">Aprender</button>
+    <button class="call-to-action">Aprender2</button>
+    <button class="call-to-action">Aprender3</button>
+<script>
+    //Objetos y metodos similares (No muy eficiente)
+
+    const zelda = {
+        name: "Zelda"
+    }
+
+    zelda.saludar = function(){
+        console.log(`Hola soy ${this.name}`);
+    };
+
+    zelda.saludar();
+
+    const link = {
+        name: "Link"
+    }
+
+    link.saludar = function(){
+        console.log(`Hola soy ${this.name}`);
+    };
+
+    link.saludar();
+
+    //Se construye la clase Hero y se instancian los heroes
+    function Hero(name){
+        const hero = {name:name}
+
+        hero.saludar = function(){
+        console.log(`Hola soy ${this.name}`);
+        };
+
+        return hero
+    }
+
+    const zelda2 = Hero("Zelda");
+    zelda2.saludar()
+    const link2 = Hero("Link");
+    link2.saludar()
+
+    //Ahora los metodos estan definidos externamente al objeto
+
+    const heroMethods = {
+        saludar: function(){
+        console.log(`Me llamo ${this.name}`);
+        },
+    }
+
+    function Hero2(name){
+        const hero = {name:name};
+        hero.saludar = heroMethods.saludar;
+        return hero;
+    }
+   
+    const zelda3 = Hero2("Zelda");
+    zelda3.saludar()
+    const link3 = Hero2("Link");
+    link3.saludar()
+
+    // Object.create
+    // const nuevoobjeto = Object.create(Objeto);
+    function Hero3(name){
+        const hero = Object.create(heroMethods);
+        //Los metodos definidos en heroMethods pasaron a ser parte del objeto Hero3
+        hero.name = name;
+        return hero;
+    }
+    const mongae = Hero3("Mongae");
+    mongae.saludar();
+    
+    //Usando el objeto prototype
+    function Hero4(name){
+        const hero = Object.create(Hero4.prototype);
+        //Los metodos definidos en heroMethods pasaron a ser parte del objeto Hero3
+        hero.name = name;
+        return hero;
+    }
+
+    Hero4.prototype.saludar = function(){
+        console.log(`Soy un prosazo llamado ${this.name}`);
+    }
+
+    const gust = Hero4("Gust");
+    gust.saludar();
+
+    //Usando el prototype de forma tacita
+
+    function Hero5(name){
+        //Los metodos definidos en prototype pasaron a ser parte de la clase
+        this.name = name;
+        //El return es algo que ocurre de manera implicita
+    }
+
+    Hero5.prototype.saludar = function(){
+        console.log(`Soy un heroe llamado ${this.name}`);
+    }
+
+    const valentin = new Hero5("Valentin");
+    valentin.saludar();
+
+
+</script>
+
+</body>
+</html>
