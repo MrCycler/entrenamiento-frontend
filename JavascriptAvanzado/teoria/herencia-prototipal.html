@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>PlatziMediaPlayer.js</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+<script>
+    function Hero(name){
+        this.name = name;
+    }
+
+    Hero.prototype.saludar = function(){
+        console.log(`Soy un heroe llamado ${this.name}`);
+    }
+
+    const link = new Hero("Link");
+    console.log('Name:',link.name);
+    console.log('Saludar:',link.saludar);
+    console.log('toString:',link.toString);
+
+    //Como saber si la propiedad es propia y no nativa
+    console.log('link.hasOwnProperty(name):',link.hasOwnProperty("name"));
+    //el metodo lo tomo prestado de prototype _proto_.method
+    console.log('link.hasOwnProperty(saludar):',link.hasOwnProperty("saludar"));
+    
+    link.saludar();
+ 
+
+</script>
+
+</body>
+</html>
