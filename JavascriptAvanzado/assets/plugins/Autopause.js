@@ -25,8 +25,7 @@ class AutoPause{
 
         /* Visibility Change, agrega un manejador para cuando no se tenga visibilidad de la pantalla*/
         document.addEventListener("visibilitychange", this.handleVisibilityChange);
-
-
+        
     }
     handlerIntersection(entries){
         console.log("threshold superado");
