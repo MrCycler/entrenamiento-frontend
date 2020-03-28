@@ -4,10 +4,14 @@
   "description": "Javascript Profesional",
   "license": "MIT",
   "author": "Juan Mendoza",
-  "scripts": {
-    "start": "live-server"
+  "scripts": {   
+    "start":"parcel index.html typescript/index.html"
   },
   "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+    "live-server": "^1.2.1",
+    "parcel-bundler": "^1.12.4"
+  },
+  "browserslist":[
+    "last 1 Chrome version"
+  ]
 }
