@@ -2,8 +2,10 @@ class AutoPause{
 
     constructor(){
         this.threshold = 0.25;
+        //Los manejadores tienen que ejecutarse en el contexto de AutoPause de modo que accedan
+        // al objeto player
         this.handlerIntersection = this.handlerIntersection.bind(this);
-
+        this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
     }
     run(player){
 
@@ -21,12 +23,26 @@ class AutoPause{
 
         observer.observe(this.player.media);
 
+        /* Visibility Change, agrega un manejador para cuando no se tenga visibilidad de la pantalla*/
+        document.addEventListener("visibilitychange", this.handleVisibilityChange);
+
+
     }
     handlerIntersection(entries){
         console.log("threshold superado");
         const entry = entries[0];
         const isVisible = entry.intersectionRatio >= this.threshold;
         if (isVisible){
+            this.player.play();
+        }
+        else{
+            this.player.pause();
+        }
+    }
+
+    handleVisibilityChange(){
+        const isVisible = document.visibilityState ==="visible";
+        if(isVisible){
             this.player.play();
         }
         else{
