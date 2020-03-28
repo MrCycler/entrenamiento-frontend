@@ -12,6 +12,7 @@ MediaPlayer.prototype._initPlugins = function (){
     //Objeto de información reducida
     const player = {
         play: () => this.play(),
+        pause: () => this.pause(),
         media: this.media,
         //Se uso getter y setters para definir en este objeto propiedades virtuales
         get muted(){
