@@ -16,11 +16,14 @@ class AutoPause{
         const observer = new IntersectionObserver(this.handlerIntersection, {
             threshold: this.threshold,
         });
+        /*El objeto Intersection Observer recibe la funcion a ejecutar si se cumple condicion (handler) y la 
+        condicion */
 
         observer.observe(this.player.media);
 
     }
     handlerIntersection(entries){
+        console.log("threshold superado");
         const entry = entries[0];
         const isVisible = entry.intersectionRatio >= this.threshold;
         if (isVisible){
