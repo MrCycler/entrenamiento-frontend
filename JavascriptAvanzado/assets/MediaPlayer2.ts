@@ -1,28 +1,18 @@
 //definida la clase media player con configuracion inicial
 class MediaPlayer {
+    media : HTMLMediaElement;
+    plugins: Array<any>;
+
     constructor(config) {
         this.media = config.el;
         this.plugins = config.plugins || [];
-        this._initPlugins();
+        this.initPlugins();
     }
     //Se agrega un metodo a la class MediaPlayer
-    _initPlugins() {
-        //Objeto de información reducida
-        const player = {
-            play: () => this.play(),
-            pause: () => this.pause(),
-            media: this.media,
-            //Se uso getter y setters para definir en este objeto propiedades virtuales
-            get muted() {
-                return this.media.muted;
-            },
-            set muted(value) {
-                this.media.muted = value;
-            }
-        };
+    private initPlugins() {
         // A cada plugin se le pasa el objeto de información reducida
         this.plugins.forEach(plugin => {
-            plugin.run(player);
+            plugin.run(this);
         });
     }
     play() {
