@@ -59,3 +59,28 @@ let someObject: object ={
 propiedad: "valor",
 }
 
+//L2 - Funciones en typescript
+
+function add2(a:number, b:number):number{
+    return a + b;
+}
+
+const sum2 = add(4,6);
+
+function createAdder (a:number): (number)=>number{
+    return function (b:number){
+        return b + a;
+    }
+}
+
+const addFour = createAdder(4);
+const fourPlus6 = addFour(6);
+
+
+//argumento opcional en funciones, argumento por defecto
+function fullName (firstName: string, lastName?:string, apodo:string ="Unnamed"):string{
+    return `${firstName} ${lastName} ${apodo}`
+}
+
+const richard = fullName ('Richard');
+console.log(richard);
