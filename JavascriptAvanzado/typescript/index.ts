@@ -84,3 +84,34 @@ function fullName (firstName: string, lastName?:string, apodo:string ="Unnamed")
 
 const richard = fullName ('Richard');
 console.log(richard);
+
+//L3 - Interfaces
+//declaran la forma de un objeto
+enum Color3 {
+    Rojo = "Rojo",
+    Verde = "Verde",
+}
+interface Rectangulo{
+    ancho: number;
+    alto: number;
+    color?: Color3; //Opcional
+}
+
+let rect: Rectangulo ={
+    ancho:4,
+    alto:5,
+    color:Color3.Rojo,
+};
+
+function area (r:Rectangulo){
+    return r.ancho*r.alto;
+}
+
+const areaRect = area(rect);
+console.log(areaRect);
+
+rect.toString = function (){
+    return `Un rectangulo ${this.color}`;
+};
+
+console.log()
