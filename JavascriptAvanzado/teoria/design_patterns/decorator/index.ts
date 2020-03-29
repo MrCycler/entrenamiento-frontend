@@ -48,5 +48,5 @@ function RequireNoNumberDecorator(field:Field):Field{
 }
 
 let field = new Field(document.querySelector("#email"));
-RequireFieldDecorator(field);
-RequireNoNumberDecorator(field);
+field = RequireFieldDecorator(field);
+field = RequireNoNumberDecorator(field);
