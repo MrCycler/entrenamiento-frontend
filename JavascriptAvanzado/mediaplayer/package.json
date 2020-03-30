@@ -1,0 +1,16 @@
+{
+  "name": "@dbotcorps/trainingmediaplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/MediaPlayer2.js",
+  "scripts": {
+    "build": "tsc src/**/*.ts src/plugins_ts/*.ts src/plugins_ts/**/*.ts --outDir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
