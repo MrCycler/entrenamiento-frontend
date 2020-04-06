@@ -8,9 +8,10 @@ import reducer from '../reducers/index';
 import { Map as map } from 'immutable';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import NotFound from '../pages/components/not-found';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Header from '../pages/components/header';
 // function logger({ getState, dispatch}) {
@@ -54,8 +55,11 @@ render(
     <Provider store={store}>
       <React.Fragment>
       <Header />
+      <Switch>
       <Route exact path="/" component={Home}/>
       <Route exact path="/videos" component={Videos}></Route>
+      <Route component={NotFound}></Route>
+      </Switch>
       </React.Fragment>
     </Provider>
   </BrowserRouter>
